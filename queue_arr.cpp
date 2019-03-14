@@ -145,7 +145,7 @@ int main()
 
 
     queue * q4 = init();
-    unsigned int total = 10000000;
+    unsigned int total = 1;
     for(unsigned int i = 0; i < total*100; i++)
     {
         enque(q4, i);
