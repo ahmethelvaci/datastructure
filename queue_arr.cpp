@@ -20,7 +20,7 @@ int deque(queue *q)
     unsigned int count = q->tail-q->head;
 
     if (count <= q->length/4) {
-        printf("resizing down (%d-%d) %d > %d\n", q->head, q->tail, q->length, q->length/2);
+        //printf("resizing down (%d-%d) %d > %d\n", q->head, q->tail, q->length, q->length/2);
         unsigned int *arr2 = (unsigned int *) malloc(sizeof(unsigned int) * q->length/2);
         unsigned int arr2_index = 0;
         unsigned int index;
@@ -51,7 +51,7 @@ void enque(queue *q, unsigned int a)
     unsigned int count = q->tail-q->head;
 
     if (count >= q->length) {
-        printf("resizing up (%d-%d) %d > %d\n", q->head, q->tail, q->length,q->length*2);
+        //printf("resizing up (%d-%d) %d > %d\n", q->head, q->tail, q->length,q->length*2);
         unsigned int *arr2 = (unsigned int *) malloc(sizeof(unsigned int)*q->length*2);
         unsigned int arr2_index = 0;
         unsigned int index;
@@ -83,7 +83,6 @@ void dump(queue *q)
         printf("%d->%d\n", index, q->arr[index]);
     }
     printf("---/DUMP---\n");
-    
 }
 
 int main()
@@ -145,28 +144,14 @@ int main()
 
 
     queue * q4 = init();
-    unsigned int total = 1;
-    for(unsigned int i = 0; i < total*100; i++)
+    unsigned int total = 100000000;
+    for(unsigned int i = 0; i < total; i++)
     {
         enque(q4, i);
     }
 
-    for(unsigned int i = 0; i < total*75; i++)
+    for(unsigned int i = 0; i < total; i++)
     {
-        // printf("--> %i\n", deque(q4));
         deque(q4);
     }
-
-    for(unsigned int i = total*100; i < total*200; i++)
-    {
-        enque(q4, i);
-    }
-
-    for(unsigned int i = 0; i < total*125; i++)
-    {
-        // printf("--> %i\n", deque(q4));
-        deque(q4);
-    }
-    
-
 }
